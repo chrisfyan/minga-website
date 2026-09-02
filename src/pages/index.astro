@@ -1,0 +1,25 @@
+---
+import Base from '../layouts/Base.astro';
+import { Image } from 'astro:assets';
+import isologo from '../assets/brand/minga-isologo-light.svg';
+---
+<Base>
+  <main class="hold">
+    <Image src={isologo} alt="minga studio" width={420} densities={[1, 2]} />
+    <p>Sitio en construcción.</p>
+    <a href="mailto:hola@minga.studio">hola@minga.studio</a>
+  </main>
+</Base>
+
+<style>
+  .hold {
+    min-height: 100dvh;
+    display: grid;
+    place-content: center;
+    justify-items: center;
+    gap: var(--space-5);
+    padding: var(--space-6);
+    text-align: center;
+  }
+  p { color: var(--text-secondary); margin: 0; }
+</style>

@@ -1,0 +1,115 @@
+/* minga.studio — tokens de diseño
+   Fuente: minga design system v1.1
+   REGLA: los componentes consumen tokens semánticos, nunca --color-* ni hex literales. */
+
+:root {
+  /* ---- Primitivos ---- */
+  --color-navy:      #0D1F4D;
+  --color-blue:      #1E4ED8;
+  --color-sky:       #7FA1E6;
+  --color-gray:      #C7C7C7;
+  --color-off-white: #F5F1EC;
+  --color-orange:    #F47A20;
+  --color-white:     #FFFFFF;
+  --color-dark-bg:   #142238;
+
+  --font-display: "Fraunces Variable", Georgia, serif;
+  --font-body:    "Manrope Variable", system-ui, sans-serif;
+
+  --space-1: 4px;   --space-2: 8px;   --space-3: 12px;
+  --space-4: 16px;  --space-5: 24px;  --space-6: 32px;
+  --space-7: 48px;  --space-8: 64px;  --space-9: 96px;
+
+  --radius-sm: 8px; --radius-md: 12px; --radius-lg: 16px;
+
+  --measure: 68ch;
+  --container: 1140px;
+
+  /* ---- Semánticos: usar SOLO estos en componentes ---- */
+  --surface:         var(--color-off-white);
+  --surface-raised:  var(--color-white);
+  --surface-inverse: var(--color-dark-bg);
+
+  --text-primary:   var(--color-navy);
+  --text-secondary: color-mix(in srgb, var(--color-navy) 70%, transparent);
+  --text-link:      var(--color-blue);
+  --text-inverse:   var(--color-white);
+  --text-on-orange: var(--color-navy);
+
+  --border:        var(--color-gray);
+  --border-strong: var(--color-navy);
+
+  --btn-primary-bg:       var(--color-navy);
+  --btn-primary-fg:       var(--color-white);
+  --btn-primary-bg-hover: var(--color-blue);
+
+  --btn-secondary-fg:     var(--color-navy);
+  --btn-secondary-border: var(--color-navy);
+
+  --btn-accent-bg: var(--color-orange);
+  --btn-accent-fg: var(--color-navy);  /* NUNCA blanco: 2,74:1 no cumple AA */
+
+  --focus-ring:        var(--color-blue);
+  --focus-ring-width:  2px;
+  --focus-ring-offset: 2px;
+
+  --disabled-bg: var(--color-gray);
+  --disabled-fg: var(--color-off-white);
+}
+
+/* Bloques sobre fondo oscuro. Se aplica a una <section>, no al documento. */
+[data-theme="dark"] {
+  --surface:        var(--color-dark-bg);
+  --surface-raised: color-mix(in srgb, var(--color-dark-bg) 90%, white);
+  --text-primary:   var(--color-white);
+  --text-secondary: var(--color-sky);
+  --text-link:      var(--color-sky);
+  --border:         color-mix(in srgb, var(--color-white) 20%, transparent);
+  --btn-primary-bg: var(--color-white);
+  --btn-primary-fg: var(--color-navy);
+
+  background: var(--surface);
+  color: var(--text-primary);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--surface);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 16px;          /* mínimo para texto corrido */
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: 900;
+  line-height: 1.1;
+  margin: 0;
+}
+
+p { max-width: var(--measure); }
+
+a { color: var(--text-link); }
+
+img, svg { max-width: 100%; height: auto; }
+
+:focus-visible {
+  outline: var(--focus-ring-width) solid var(--focus-ring);
+  outline-offset: var(--focus-ring-offset);
+}
+
+.container {
+  width: min(100% - var(--space-6) * 2, var(--container));
+  margin-inline: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+  }
+}
